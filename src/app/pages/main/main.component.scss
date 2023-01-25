@@ -1,0 +1,33 @@
+.app-main {
+  h1,
+  h2 {
+    font-family: "Roboto", sans-serif !important;
+  }
+  margin: 16px;
+  &-gt-xs {
+    margin: 10px 20vw;
+  }
+  &-form {
+    .form {
+      width: 100%;
+      .mat-form-field {
+        max-width: 500px;
+      }
+      &-submit {
+        margin-top: 20px;
+        max-width: 500px;
+        border-radius: 8px;
+        height: 48px;
+        background-color: rgb(2, 8, 116);
+        border: unset;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        &-disabled {
+          background-color: rgb(176, 180, 180) !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+<div fxLayout="column" class="app-main" ngClass.gt-xs="app-main-gt-xs">
+  <div fxLayout="column" fxLayoutAlign="start center">
+    <h1>Formularios Reactivos en Angular</h1>
+  </div>
+  <div fxLayout="column" class="app-main-form" fxLayoutAlign="start start">
+    <form
+      [formGroup]="userForm"
+      fxLayout="column"
+      class="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <mat-form-field class="custom-form-control">
+        <mat-label class="custom-form-control__label">Nombre</mat-label>
+        <input
+          tabindex="1"
+          type="text"
+          matInput
+          class="control-input"
+          formControlName="name"
+        />
+
+        <mat-error *ngIf="userForm.controls['name'].hasError('required')"
+          >El nombre es obligatorio
+        </mat-error>
+        <mat-error *ngIf="userForm.controls['name'].hasError('minlength')"
+          >Debe de tener al menos 2 carácteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="custom-form-control">
+        <mat-label class="custom-form-control__label">Apellido</mat-label>
+        <input
+          tabindex="2"
+          type="text"
+          matInput
+          class="control-input"
+          formControlName="surname"
+        />
+        <mat-error *ngIf="userForm.controls['surname'].hasError('required')"
+          >El apellido es obligatorio
+        </mat-error>
+        <mat-error *ngIf="userForm.controls['surname'].hasError('minlength')"
+          >Debe de tener al menos 2 carácteres
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="custom-form-control">
+        <mat-label class="custom-form-control__label">Apellido 2</mat-label>
+        <input
+          tabindex="3"
+          type="text"
+          matInput
+          class="control-input"
+          formControlName="surname2"
+        />
+      </mat-form-field>
+      <mat-form-field fxFlex class="custom-form-control">
+        <mat-label class="custom-form-control__label">Email</mat-label>
+        <input
+          type="text"
+          matInput
+          class="control-input"
+          tabindex="4"
+          formControlName="email"
+        />
+
+        <mat-error *ngIf="userForm.controls['email'].hasError('required')"
+          >El email es obligatorio
+        </mat-error>
+        <mat-error
+          *ngIf="
+            userForm.controls['email'].hasError('email') ||
+            userForm.controls['email'].hasError('pattern')
+          "
+          >Email no tiene formato correcto
+        </mat-error>
+      </mat-form-field>
+      <button
+        class="form-submit"
+        type="submit"
+        [disabled]="!userForm.valid"
+        [ngClass]="!userForm.valid ? 'form-submit-disabled' : ''"
+      >
+        Enviar
+      </button>
+    </form>
+
+    <pre>
+      {{ userForm.value | json }}
+    </pre>
+    <span>Is form valid?: {{ userForm.valid }}</span>
+    <span>Nombre: {{ userForm.get("name")?.value }}</span>
+    <span>Apellidos: {{ userForm.get("surname")?.value }}</span>
+    <span>Email: {{ userForm.get("email")?.value }}</span>
+    <h2 *ngIf="submitted">El formulario se ha enviado</h2>
+  </div>
+</div>
