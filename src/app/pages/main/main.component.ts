@@ -9,7 +9,6 @@ export class MainComponent implements OnInit {
   public userForm!: FormGroup;
   public submitted: boolean = false;
   constructor() {}
-
   ngOnInit(): void {
     const patternSpaces = /^(\s+\S+\s*)*(?!\s).*$/;
     const patternEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
